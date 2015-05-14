@@ -37,9 +37,9 @@ app.get('/quote/:id', function(req, res) {
     return res.send('Error 404: No quote found');
   }
 
-  var q = quotes[req.params.id];
-  res.send(q);
-  /*query = client.query('SELECT COUNT(date) AS count FROM visits WHERE date = $1', [date]);
+ // var q = quotes[req.params.id];
+  //res.send(q);
+  query = client.query('SELECT author FROM quote WHERE id = $1', [id]);
   query.on('row', function(result) {
     console.log(result);
 
@@ -48,7 +48,7 @@ app.get('/quote/:id', function(req, res) {
     } else {
       res.send('Visits today: ' + result.count);
     }
-  }); */
+  }); 
    
 });
 
