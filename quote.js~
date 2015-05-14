@@ -39,6 +39,17 @@ app.get('/quote/:id', function(req, res) {
 
   var q = quotes[req.params.id];
   res.send(q);
+  /*query = client.query('SELECT COUNT(date) AS count FROM visits WHERE date = $1', [date]);
+  query.on('row', function(result) {
+    console.log(result);
+
+    if (!result) {
+      return res.send('No data found');
+    } else {
+      res.send('Visits today: ' + result.count);
+    }
+  }); */
+   
 });
 
 app.post('/quote', function(req, res) {
