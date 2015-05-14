@@ -15,7 +15,7 @@ client = new pg.Client(connectionString);
 client.connect();
 query = client.query ('drop table quote');
 query = client.query('CREATE TABLE quote (id int primary key , author varchar(20) not null , text text not null)');
-for ( int id = 0 ; id <4 ; id++){
+for ( var id = 0 ; id <4 ; id++){
 	
 query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [id, quotes[id].author , quotes[id].text]);
 }
