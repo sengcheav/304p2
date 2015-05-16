@@ -65,11 +65,11 @@ app.post('/quote', function(req, res) {
   };
   console.log("Added!");
   newQuote.pos = quotes.length-1;
-  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [newQuote.pos, newQuote.author , newQuote.text]);
+//  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [newQuote.pos, newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
-  //console.log("Added!");
-  //newQuote.pos = quotes.length-1;
+  console.log("Added!");
+  newQuote.pos = quotes.length-1;
   res.send(newQuote);
 });
 
