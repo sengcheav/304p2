@@ -66,7 +66,14 @@ app.post('/quote', function(req, res) {
   };
   console.log("Added!");
   newQuote.pos = quotes.length;
-  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [newQuote.pos, newQuote.author , newQuote.text]);
+ var position ;
+ query = client.query('SELECT COUNT(id)  FROM quote ');
+  query.on('row', function(result) {
+    console.log(result);
+    position = result ; 
+    
+  });
+  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [position, newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
   console.log("Added!");
