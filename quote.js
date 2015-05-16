@@ -81,7 +81,7 @@ app.post('/quote', function(req, res) {
     //position = result.count ;
      return result.JSON(result.count);
    });
-  })
+  }
 
  ) , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
