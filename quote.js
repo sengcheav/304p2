@@ -46,7 +46,7 @@ app.get('/quote/:id', function(req, res) {
     if (!result) {
       return res.send('No data found');
     } else {
-      res.send('Visits today: ' + result.count);
+      res.send(result);
     }
   }); 
    
