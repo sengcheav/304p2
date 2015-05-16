@@ -60,7 +60,7 @@ app.get('/quote/:id', function(req, res) {
 //};
 
 app.post('/quote', function(req, res) {
-  var position = getCount();
+//  var position = getCount();
   console.log(req.body);
   if(!req.body.hasOwnProperty('author') || !req.body.hasOwnProperty('text')) {
     res.statusCode = 400;
