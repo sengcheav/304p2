@@ -69,8 +69,8 @@ app.post('/quote', function(req, res) {
  var position ;
  query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
  query.on('row', function(result) {
-    console.log("POSITION : ------ " +result);
-    position = result ; 
+    console.log("POSITION : ------ " +result.COUNT);
+    position = result.COUNT ; 
     
   });
   query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [position, newQuote.author , newQuote.text]);
