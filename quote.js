@@ -81,12 +81,16 @@ app.post('/quote', function(req, res) {
     
   //});
 //position = position.count ; 
-  var postion = function() {
+//  var postion = function() {
+//query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
+//query.on('row', function(result){ return result.count ; });
+
+//};
+  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [(function() {
 query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
 query.on('row', function(result){ return result.count ; });
-
-};
-  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [position, newQuote.author , newQuote.text]);
+  
+};) , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
   console.log("Added!");
