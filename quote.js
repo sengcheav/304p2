@@ -70,7 +70,7 @@ app.post('/quote', function(req, res) {
   //newQuote.pos = quotes.length;
    query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
    query.on('row', function(result) {
-   // console.log("---------------------" + result.count);
+    console.log("---------------------" + result.count);
     position = result.count ; 
     
   });
