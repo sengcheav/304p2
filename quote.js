@@ -67,8 +67,8 @@ app.post('/quote', function(req, res) {
   console.log("Added!");
   newQuote.pos = quotes.length;
  var position ;
- query = client.query('SELECT COUNT(id)  FROM quote ');
-  query.on('row', function(result) {
+ query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
+ query.on('row', function(result) {
     console.log(result);
     position = result ; 
     
