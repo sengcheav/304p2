@@ -67,23 +67,15 @@ app.post('/quote', function(req, res) {
     text : req.body.text
   };
   
-  //newQuote.pos = quotes.length;
-//   query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
-  // query.on('row', function(result) {
-   // console.log("---------------------" + result.count);
-   // position = result.count ; 
-    
- // });
+  newQuote.pos = quotes.length;
+   query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
+   query.on('row', function(result, callback) {
+    console.log("---------------------" + result.count);
+    position = result.count ; 
+    callback(position); 
+  });
   console.log("++++++" + position); 
-  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)',[(function(callback){ client.query('SELECT COUNT(id) AS COUNT FROM quote ');
-   query.on('row', function(result) {
-    //console.log("---------------------" + result.count);
-    //position = result.count ;
-     callback(result.count);
-   });
-  }
-
- ) , newQuote.author , newQuote.text]);
+  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)[position , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
   console.log("Added!");
