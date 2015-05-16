@@ -55,7 +55,8 @@ app.get('/quote/:id', function(req, res) {
 
 var getCount = function() {
 query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
-query.on('row', function(result){ return result.count ; }
+query.on('row', function(result){ return result.count ; });
+
 };
 
 app.post('/quote', function(req, res) {
