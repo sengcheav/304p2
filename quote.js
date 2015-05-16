@@ -60,6 +60,7 @@ query.on('row', function(result){ return result.count ; });
 };
 
 app.post('/quote', function(req, res) {
+  var position = getCount();
   console.log(req.body);
   if(!req.body.hasOwnProperty('author') || !req.body.hasOwnProperty('text')) {
     res.statusCode = 400;
@@ -72,7 +73,7 @@ app.post('/quote', function(req, res) {
   };
   console.log("Added!");
   newQuote.pos = quotes.length;
- var position = getCount() ;
+// var position = getCount() ;
 // query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
  //query.on('row', function(result) {
    // console.log("---------------------" + result.count);
