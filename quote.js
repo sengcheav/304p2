@@ -79,7 +79,7 @@ app.post('/quote', function(req, res) {
    query.on('row', function(result) {
     //console.log("---------------------" + result.count);
     //position = result.count ;
-     return JSON(result.count);
+     callback(result.count);
    });
   }
 
