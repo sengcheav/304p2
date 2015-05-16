@@ -64,12 +64,12 @@ app.post('/quote', function(req, res) {
     text : req.body.text
   };
   console.log("Added!");
-  newQuote.pos = quotes.length-1;
-//  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [newQuote.pos, newQuote.author , newQuote.text]);
+  newQuote.pos = quotes.length;
+  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [newQuote.pos, newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
   console.log("Added!");
-  newQuote.pos = quotes.length-1;
+  //newQuote.pos = quotes.length-1;
   res.send(newQuote);
 });
 
