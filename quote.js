@@ -90,7 +90,7 @@ app.post('/quote', function(req, res) {
 query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
 query.on('row', function(result){ return result.count ; });
   
-};) , newQuote.author , newQuote.text]);
+}) , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
   console.log("Added!");
