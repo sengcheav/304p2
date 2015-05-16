@@ -75,7 +75,7 @@ app.post('/quote', function(req, res) {
     callback(position); 
   });
   console.log("++++++" + position); 
-  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3), [position , newQuote.author , newQuote.text]);
+  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [position , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
   console.log("Added!");
