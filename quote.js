@@ -53,14 +53,9 @@ app.get('/quote/:id', function(req, res) {
    
 });
 
-//var getCount = function() {
-//query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
-//query.on('row', function(result){ return result.count ; });
-
-//};
 
 app.post('/quote', function(req, res) {
-//  var position = getCount();
+  var position =0 ;
   console.log(req.body);
   if(!req.body.hasOwnProperty('author') || !req.body.hasOwnProperty('text')) {
     res.statusCode = 400;
@@ -71,27 +66,16 @@ app.post('/quote', function(req, res) {
     author : req.body.author,
     text : req.body.text
   };
-  console.log("Added!");
+  
   //newQuote.pos = quotes.length;
-// var position = getCount() ;
-// query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
- //query.on('row', function(result) {
+   query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
+   query.on('row', function(result) {
    // console.log("---------------------" + result.count);
-   // position = result.count ; 
+    position = result.count ; 
     
-  //});
-//position = position.count ; 
-//  var postion = function() {
-//query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
-//query.on('row', function(result){ return result.count ; });
-
-//};
-  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [(function() {
-var count ;
-query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
-query.on('row', function(result){ count =  result.count ; });
-  return count ; 
-}) , newQuote.author , newQuote.text]);
+  });
+  console.log("++++++" + position); 
+  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)',[position , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
   console.log("Added!");
