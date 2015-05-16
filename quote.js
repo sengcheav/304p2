@@ -53,6 +53,11 @@ app.get('/quote/:id', function(req, res) {
    
 });
 
+var getCount = function() {
+query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
+query.on('row', function(result){ return result.count ; }
+};
+
 app.post('/quote', function(req, res) {
   console.log(req.body);
   if(!req.body.hasOwnProperty('author') || !req.body.hasOwnProperty('text')) {
@@ -66,13 +71,13 @@ app.post('/quote', function(req, res) {
   };
   console.log("Added!");
   newQuote.pos = quotes.length;
- var position ;
- query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
- query.on('row', function(result) {
-    console.log("---------------------" + result.count);
-    position = result.count ; 
+ var position = getCount() ;
+// query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
+ //query.on('row', function(result) {
+   // console.log("---------------------" + result.count);
+   // position = result.count ; 
     
-  });
+  //});
 //position = position.count ; 
   query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2,$3)', [position, newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
