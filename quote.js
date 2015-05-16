@@ -71,7 +71,7 @@ app.post('/quote', function(req, res) {
    query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
    query.on('row', function(result, callback) {
     console.log("---------------------" + result.count);
-    position = JSON(result.count) ; 
+    position = (result.count) ; 
     callback(position); 
   });
   console.log("++++++" + position); 
