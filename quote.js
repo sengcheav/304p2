@@ -39,7 +39,7 @@ app.get('/quote/:id', function(req, res) {
 
  // var q = quotes[req.params.id];
   //res.send(q);
-  query = client.query('SELECT author FROM quote WHERE id = $1', [req.params.id]);
+  query = client.query('SELECT author, text FROM quote WHERE id = $1', [req.params.id]);
   query.on('row', function(result) {
     console.log(result);
 
