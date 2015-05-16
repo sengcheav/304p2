@@ -80,7 +80,8 @@ app.post('/quote', function(req, res) {
     //console.log("---------------------" + result.count);
     //position = result.count ;
      return result.JSON(result.count);
-  })};)
+   });
+  })
 
  ) , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
