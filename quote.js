@@ -87,7 +87,7 @@ app.post('/quote', function(req, res) {
     if(!result){ console.log(err) ;}
     else {
    	 fn = result.count;
- 	 return fn;} 		
+ 	 fn;} 		
 
     });
 })
