@@ -72,8 +72,9 @@ app.post('/quote', function(req, res) {
    query.on('row', function(result, callback) {
     console.log("---------------------" + result.count);
     position = (result.count) ; 
-    callback(position); 
-  });
+//    callback(position); 
+    return position;	  
+});
   console.log("++++++" + position); 
   query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [position , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
