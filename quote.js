@@ -91,7 +91,7 @@ app.post('/quote', function(req, res) {
 
     });
 })
- position, newQuote.author , newQuote.text]);
+ , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
   console.log("Added!");
