@@ -77,10 +77,13 @@ app.post('/quote', function(req, res) {
   console.log("++++++" + position); 
   query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [(function(){
     query = client.query('SELECT COUNT(id) AS COUNT FROM quote '); 	 
-    query.on('row', function(result) {
-    console.log("---------------------" + result.count);
-    return parseInt(result.count) ;
-});
+    query.on('row', function(result,err) {
+    // console.log("---------------------" + result.count);
+    //return parseInt(result.count) ;
+    if(!result){ console.log(err) ;}
+    else { return result.count;} 		
+
+    });
 }) , newQuote.author , newQuote.text]);
   //quotes.push(newQuote);
   // should send back the location at this point
