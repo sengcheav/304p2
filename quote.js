@@ -101,8 +101,9 @@ fn;}
 
  query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
     query.on('row', function(err, result) { 
-	 if(result){  
-	    var c = result.count ;
+var c ; 	
+ if(result){  
+	    c = result.count ;
 	 }  
 	 query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [c , newQuote.author, newQuote.text]);
 	 query.on ('row', function (err, res){
