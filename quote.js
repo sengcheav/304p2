@@ -77,7 +77,7 @@ app.post('/quote', function(req, res) {
     return position;
     }	  
   });*/
-  console.log("++++++" + position); 
+/*  console.log("++++++" + position); 
   query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [
     (function(fn){
     query = client.query('SELECT COUNT(id) AS COUNT FROM quote '); 	 
@@ -97,7 +97,22 @@ fn;}
   // should send back the location at this point
   console.log("Added!");
   //newQuote.pos = quotes.length-1;
-  res.send(newQuote);
+  res.send(newQuote);*/
+
+ query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
+    query.on('row', function(result , err) {
+	 query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
+	 query.on ('row', function (res)){
+	 if(err) { console.log(err) ;}
+	 }
+
+    });
+
+
+
+
+
+
 });
 
 app.delete('/quote/:id', function(req, res) {
