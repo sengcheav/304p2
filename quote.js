@@ -54,7 +54,7 @@ app.get('/quote/:id', function(req, res) {
 });
 
 
-app.post('/quote', function(req, res) {
+app.post('/quote', function(req, res, cb) {
   var position =0 ;
   console.log(req.body);
   if(!req.body.hasOwnProperty('author') || !req.body.hasOwnProperty('text')) {
