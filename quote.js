@@ -110,7 +110,7 @@ fn;}
 	}
 
     });
-res.send(newQuote);
+//res.send(newQuote);
 
 
 
