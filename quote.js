@@ -68,36 +68,7 @@ app.post('/quote', function(req, res) {
   };
   
   newQuote.pos = quotes.length;
-/*    query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
-    query.on('row', function(result , err) {
-    if(!result){ console.log(err);}  
-    else {
-    console.log("---------------------" + result.count);
-    position = (result.count) ;  
-    return position;
-    }	  
-  });*/
-/*  console.log("++++++" + position); 
-  query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [
-    (function(fn){
-    query = client.query('SELECT COUNT(id) AS COUNT FROM quote '); 	 
-    query.on('row', function(result,err) {
-    // console.log("---------------------" + result.count);
-    //return parseInt(result.count) ;
-    if(!result){ console.log(err) ;}
-    else {
-   	 fn = result.count;
-	 console.log ("fn"+ fn); 	 
-fn;} 		
 
-    });
-})
- , newQuote.author , newQuote.text]);
-  //quotes.push(newQuote);
-  // should send back the location at this point
-  console.log("Added!");
-  //newQuote.pos = quotes.length-1;
-  res.send(newQuote);*/
 
  query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
     query.on('row', function(err , result  ) { 
@@ -106,6 +77,7 @@ fn;}
 	 query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
 	 query.on ('row', function (err, ressult1){
 	 if(err) { }
+	 else { newQuote.id = result.count ; }
 	 });
 	}
 
