@@ -73,9 +73,9 @@ app.post('/quote', function(req, res) {
     query.on('row', function( err, result) { 
     	if(err) {console.log (err); }
     	else {
-    	    console.log (result );
+    	    console.log ("COUNT : --"  + result.count );
     	    query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
-	    query.on ('row', function (err, result1){
+	    query.on ('row', function (err, result){
 	    if(err) {console.log (err); }
 	    else { console.log ("YAY");}
 	    });	
