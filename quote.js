@@ -73,12 +73,12 @@ console.log("FK");
     query.on('row', function( err, result) { 
     	if(err) {console.log (err);console.log("ERR"); }
     	else { console.log ("FK heroku") ;
- //   	    console.log ("COUNT : --"  + result.count );
-  //  	    query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
-//	    query.on ('row', function (err, result){
-//	    if(err) {console.log (err); }
-//	    else { console.log ("YAY");}
-//	    });	
+    	    console.log ("COUNT : --"  + result.count );
+    	    query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
+	    query.on ('row', function (err, result){
+	    if(err) {console.log (err); }
+	    else { console.log ("YAY");}
+	    });	
     	}
 //	if (err){console .log("ERROR"); }	
 //	else {console .log("NOT ERROR");
