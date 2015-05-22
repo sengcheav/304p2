@@ -74,11 +74,11 @@ app.post('/quote', function(req, res) {
     query.on('row', function(err , result  ) { 
 	if (err){}	
 	else {
-         newQuote.pos = result.count ;
+  //       newQuote.pos = result.count ;
 	 query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
 	 query.on ('row', function (err, ressult1){
 	 if(err) { }
-	 else {  }
+//	 else {  }
 	 });
 	}
 
