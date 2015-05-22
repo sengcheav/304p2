@@ -67,8 +67,8 @@ app.post('/quote', function(req, res) {
     text : req.body.text
   };
   
-  newQuote.pos = quotes.length;
-
+ newQuote.pos = quotes.length;
+//
  query = client.query('SELECT COUNT(id) AS COUNT FROM quote');
     query.on('row', function( err, result) { 
     	if(err) {console.log (err); }
@@ -80,22 +80,17 @@ app.post('/quote', function(req, res) {
 	    else { console.log ("YAY");}
 	    });	
     	}
-/*	if (err){console .log("ERROR"); }	
-	else {console .log("NOT ERROR");
-	 query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
-	 query.on ('row', function (err, result1){
-	 if(err) {console.log ("Post error"); }
-	 else {}
-	 });
-	}*/
+//	if (err){console .log("ERROR"); }	
+//	else {console .log("NOT ERROR");
+//	 query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
+//	 query.on ('row', function (err, result1){
+///	 if(err) {console.log ("Post error"); }
+//	 else {}
+//	 });
+//	}
 
     });
 res.send(newQuote);
-
-
-
-
-
 });
 
 app.delete('/quote/:id', function(req, res) {
