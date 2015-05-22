@@ -67,15 +67,15 @@ app.post('/quote', function(req, res) {
     text : req.body.text
   };
   
-  newQuote.pos = quotes.length;
+//  newQuote.pos = quotes.length;
 
 
  query = client.query('SELECT COUNT(id) AS COUNT FROM quote ');
     query.on('row', function(err , result  ) { 
 	if (err){}	
 	else {
+         newQuote.pos = result.count ;
 	 query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
-	 newQuote.pos = result.count ;
 	 query.on ('row', function (err, ressult1){
 	 if(err) { }
 	 else {  }
