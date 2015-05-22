@@ -72,7 +72,14 @@ app.post('/quote', function(req, res) {
  query = client.query('SELECT COUNT(id) AS COUNT FROM quote');
     query.on('row', function( err, result) { 
     	if(err) {console.log (err); }
-    	else {console.log (result );}
+    	else {
+    	    console.log (result );
+    	    query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
+	    query.on ('row', function (err, result1){
+	    if(err) {console.log (err); }
+	    else { console.log ("YAY");}
+	    });	
+    	}
 /*	if (err){console .log("ERROR"); }	
 	else {console .log("NOT ERROR");
 	 query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
