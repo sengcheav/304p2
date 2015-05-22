@@ -71,7 +71,7 @@ app.post('/quote', function(req, res) {
 console.log("FK");
  query = client.query('SELECT COUNT(id) AS COUNT FROM quote');
     query.on('row', function( err, result) { 
-    	if(err) {console.log (err); }
+    	if(err) {console.log (err);console.log("ERR"); }
     	else { console.log ("FK heroku") ;
  //   	    console.log ("COUNT : --"  + result.count );
   //  	    query = client.query('INSERT INTO quote (id , author , text) VALUES($1, $2, $3)', [result.count , newQuote.author, newQuote.text]);
